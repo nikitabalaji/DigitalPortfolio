@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nikita Balaji | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="profile">
+      <img src="nikita.jpg" alt="Nikita Balaji">
+      <h1>Nikita Balaji</h1>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+        I’m Nikita Balaji, a Data Science undergraduate from Coimbatore with a strong interest in AI, analytics, and emerging technologies.
+         My academic background and internships in graphic design, public relations, and social media management have equipped me with both technical 
+         and creative skills. I enjoy translating data into meaningful insights while also bringing innovative ideas into digital communication.
+         Alongside my studies, I am building experience in freelancing to expand my professional scope. My long-term goal is to establish my own 
+         data analysis business, leveraging data-driven solutions to help organizations grow and make informed decisions.
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="projects-container">
+      
+      <div class="project-card" onclick="openModal(
+        'Price sensitivity analysis',
+        'Interactive dashboards built with Python, Pandas, and Plotly for real-time insights.',
+        ['Python','Pandas','Plotly','HTML/CSS'],
+        ['Interactive charts','Real-time updates','Responsive design']
+      )">
+        <img src="analysis img.jpg" alt="Project 1">
+        <div class="project-name">Price sensitivity analysis</div>
+      </div>
+
+      <div class="project-card" onclick="openModal(
+        'Study Assist',
+        'Predictive model for classification problems with high accuracy using scikit-learn.',
+        ['Python','Scikit-learn','Jupyter Notebook'],
+        ['High accuracy','Feature engineering','Cross-validation']
+      )">
+        <img src="education.png" alt="Project 2">
+        <div class="project-name">Study Assist</div>
+      </div>
+
+      <div class="project-card" onclick="openModal(
+        'Impact of capital structure on firm profitability  ',
+        'Data-driven social media campaign that boosted engagement and reach by 40%.',
+        ['Social Media APIs','Python','Analytics Tools'],
+        ['Engagement tracking','Audience analysis','Performance reporting']
+      )">
+        <img src="ruby.jpg" alt="Project 3">
+        <div class="project-name">Impact of capital structure on firm profitability</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+
+      <h4>Tech Stack</h4>
+      <ul id="modalStack"></ul>
+
+      <h4>Features</h4>
+      <ul id="modalFeatures"></ul>
+    </div>
+  </div>
+
+  <!-- Contact -->
+<section id="contact">
+  <h2>Contact Me</h2>
+  <div class="contact-container">
+    <form>
+      <label for="name">Your Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+
+      <label for="message">Your Message</label>
+      <textarea id="message" rows="5" placeholder="Write your message..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Nikita Balaji | Professional Portfolio</p>
+  </footer>
+
+  <!-- 🔹 Popup JavaScript inside HTML -->
+  <script>
+    function openModal(title, desc, stack, features) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDesc').innerText = desc;
+
+      let stackList = document.getElementById('modalStack');
+      stackList.innerHTML = "";
+      stack.forEach(item => {
+        let li = document.createElement("li");
+        li.innerText = item;
+        stackList.appendChild(li);
+      });
+
+      let featureList = document.getElementById('modalFeatures');
+      featureList.innerHTML = "";
+      features.forEach(f => {
+        let li = document.createElement("li");
+        li.innerText = f;
+        featureList.appendChild(li);
+      });
+
+      document.getElementById('projectModal').classList.add("show");
+    }
+
+    function closeModal() {
+      document.getElementById('projectModal').classList.remove("show");
+    }
+
+    window.onclick = function(event) {
+      if (event.target === document.getElementById('projectModal')) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>
